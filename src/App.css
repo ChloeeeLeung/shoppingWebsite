@@ -42,7 +42,7 @@
   border: 0;
   border-radius: 10px;
   margin: 0px 2px;
-  width: 20vh;
+  width: 25vh;
 }
 
 .Product-list {
@@ -145,4 +145,29 @@
 
 .Quantity-input {
   width: 50px;
+}
+
+.Product-page-card {
+  background-color: white;
+  display: flex;
+  margin: 10px 5px;
+  border-radius: 15px;
+  min-height: 40vh;
+  min-width: 100vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: #3D2C2E;
+}
+
+.Product-page-img {
+  margin: 10px;
+  height: 40vh;
+  width: 40vh;
+}
+
+.Product-page-detail {
+  flex-direction: column;
+  align-items: flex-start;
+    text-align: left;
 }

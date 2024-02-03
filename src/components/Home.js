@@ -33,7 +33,7 @@ function Home({ hierarchicalMenu }) {
             <button className="Checkout">Checkout</button>
           </div>
         </nav>
-         <nav>
+         <nav className="Hierarchical">
             {hierarchicalMenu.map((item, index) => (
             <React.Fragment key={item.path}>
                 {index !== 0 && ' > '}
@@ -71,39 +71,51 @@ function ProductList() {
 
   if (location.pathname === '/decoration') {
     productList = [
-      { name: 'Candle Container 1', price: '$150', image: product1 },
-      { name: 'Candle Container 2', price: '$130', image: product1 },
-      { name: 'Candle Container 3', price: '$120', image: product1 },
-      { name: 'Candle Container 4', price: '$110', image: product1 },
-      { name: 'Candle Container 5', price: '$100', image: product1 },
-      { name: 'Candle Container 6', price: '$140', image: product1 },
+      { name: 'Candle Container 1', price: '$150', image: product1, pathname: location.pathname },
+      { name: 'Candle Container 2', price: '$130', image: product1, pathname: location.pathname },
+      { name: 'Candle Container 3', price: '$120', image: product1, pathname: location.pathname },
+      { name: 'Candle Container 4', price: '$110', image: product1, pathname: location.pathname },
+      { name: 'Candle Container 5', price: '$100', image: product1, pathname: location.pathname },
+      { name: 'Candle Container 6', price: '$140', image: product1, pathname: location.pathname },
     ];
   } else if (location.pathname === '/tableware') {
     productList = [
-      { name: 'Tableware 1', price: '$50', image: product2 },
-      { name: 'Tableware 2', price: '$120', image: product2 },
-      { name: 'Tableware 3', price: '$70', image: product2 },
-      { name: 'Tableware 4', price: '$10', image: product2 },
-      { name: 'Tableware 5', price: '$580', image: product2 },
-      { name: 'Tableware 6', price: '$70', image: product2 },
+      { name: 'Tableware 1', price: '$50', image: product2, pathname: location.pathname },
+      { name: 'Tableware 2', price: '$120', image: product2, pathname: location.pathname },
+      { name: 'Tableware 3', price: '$70', image: product2, pathname: location.pathname },
+      { name: 'Tableware 4', price: '$10', image: product2, pathname: location.pathname },
+      { name: 'Tableware 5', price: '$580', image: product2, pathname: location.pathname },
+      { name: 'Tableware 6', price: '$70', image: product2, pathname: location.pathname },
     ];
   } else if (location.pathname === '/vase') {
     productList = [
-      { name: 'Vase 1', price: '$100', image: product3 },
-      { name: 'Vase 2', price: '$210', image: product3 },
-      { name: 'Vase 3', price: '$140', image: product3 },
-      { name: 'Vase 4', price: '$1800', image: product3 },
-      { name: 'Vase 5', price: '$1005', image: product3 },
-      { name: 'Vase 6', price: '$1040', image: product3 },
+      { name: 'Vase 1', price: '$100', image: product3, pathname: location.pathname },
+      { name: 'Vase 2', price: '$210', image: product3, pathname: location.pathname },
+      { name: 'Vase 3', price: '$140', image: product3, pathname: location.pathname },
+      { name: 'Vase 4', price: '$1800', image: product3, pathname: location.pathname },
+      { name: 'Vase 5', price: '$1005', image: product3, pathname: location.pathname },
+      { name: 'Vase 6', price: '$1040', image: product3, pathname: location.pathname },
     ];
   } else if (location.pathname === '/cup') {
     productList = [
-      { name: 'Cup 1', price: '$20', image: product4 },
-      { name: 'Cup 2', price: '$120', image: product4 },
-      { name: 'Cup 3', price: '$210', image: product4 },
-      { name: 'Cup 4', price: '$250', image: product4 },
-      { name: 'Cup 5', price: '$420', image: product4 },
-      { name: 'Cup 6', price: '$270', image: product4 },
+      { name: 'Cup 1', price: '$20', image: product4, pathname: location.pathname },
+      { name: 'Cup 2', price: '$120', image: product4, pathname: location.pathname },
+      { name: 'Cup 3', price: '$210', image: product4, pathname: location.pathname },
+      { name: 'Cup 4', price: '$250', image: product4, pathname: location.pathname },
+      { name: 'Cup 5', price: '$420', image: product4, pathname: location.pathname },
+      { name: 'Cup 6', price: '$270', image: product4, pathname: location.pathname },
+    ];
+  } else if (location.pathname === '/') {
+    productList = [
+      { name: 'Candle Container 1', price: '$150', image: product1, pathname: '/decoration'},
+      { name: 'Tableware 1', price: '$50', image: product2, pathname: '/tableware' },
+      { name: 'Vase 1', price: '$100', image: product3, pathname: '/vase' },
+      { name: 'Cup 1', price: '$20', image: product4, pathname: '/cup' },
+      { name: 'Candle Container 2', price: '$130', image: product1, pathname: '/decoration' },
+      { name: 'Tableware 2', price: '$120', image: product2, pathname: '/tableware' },
+      { name: 'Vase 2', price: '$210', image: product3, pathname: '/vase' },
+      { name: 'Cup 2', price: '$120', image: product4, pathname: '/cup' },
+      { name: 'Candle Container 3', price: '$120', image: product1, pathname: '/decoration' },
     ];
   }
 
@@ -111,8 +123,10 @@ function ProductList() {
     <div className="Product-list">
       {productList.map((product, index) => (
         <div className="Product-card" key={index}>
-          <img src={product.image} className="Product-img" alt={product.name} />
-          <Link to={`${location.pathname}/product`}>
+          <Link to={`${product.pathname}/product`}>
+            <img src={product.image} className="Product-img" alt={product.name} />
+          </Link>
+          <Link to={{ pathname: `${product.pathname}/product` }}>
             <h6 className="Product-name">{product.name}</h6>
           </Link>
           <h6 className="Product-price">{product.price}</h6>

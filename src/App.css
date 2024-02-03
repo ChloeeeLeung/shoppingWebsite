@@ -101,6 +101,15 @@
   margin-bottom: 0;
 }
 
+.Hierarchical {
+  color: #3D2C2E;
+  margin-right: auto;
+  margin-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: small;
+}
+
 .Submenu {
   background-color: white;
   color: #3D2C2E;

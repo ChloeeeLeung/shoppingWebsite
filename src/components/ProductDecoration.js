@@ -4,15 +4,9 @@ import "../App.css";
 import product1 from '../assets/product1.jpg';
 import { Link, useLocation } from 'react-router-dom';
 
-const ProductDecoration = () => {
-    const hierarchicalMenu = [
-		{ name: 'Home', path: '/' },
-		{ name: 'Decoration', path: '/decoration' },
-		{ name: 'Candel Container', path: '/decoration/product' }
-    ];
-    
+const ProductDecoration = ({ hierarchicalMenu }) => {
     const location = useLocation();
-    
+    console.log(location.pathname);
 	return (
 		<div className="App"> 
 			<header className="App-header">
@@ -38,16 +32,15 @@ const ProductDecoration = () => {
                     </div>
                 </nav>
                 <nav>
-        {hierarchicalMenu.map((item, index) => (
-          <React.Fragment key={item.path}>
-            {index !== 0 && ' > '}
-            <Link to={item.path} className={location.pathname === item.path ? 'active' : ''}>
-              {item.name}
-            </Link>
-          </React.Fragment>
-        ))}
-      </nav>
-
+                {hierarchicalMenu.map((item, index) => (
+                    <React.Fragment key={item.path}>
+                        {index !== 0 && ' > '}
+                        <Link to={item.path} className={location.pathname === item.path ? 'active' : ''}>
+                        {item.name}
+                        </Link>
+                    </React.Fragment>
+                    ))}
+                </nav>
                 <div className="Product-page-card">
                     <img src={product1} className="Product-page-img" alt="Product 1" />
                     <dir className='Product-page-detail'>

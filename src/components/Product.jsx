@@ -3,7 +3,7 @@ import logo from '../assets/logo.jpg';
 import "../App.css";
 import { Link, useLocation } from 'react-router-dom';
 
-const ProductDecoration = ({ hierarchicalMenu }) => {
+const Product = ({ hierarchicalMenu }) => {
     const location = useLocation();
     const { product } = location?.state;
 
@@ -60,4 +60,4 @@ const ProductDecoration = ({ hierarchicalMenu }) => {
 	);
 };
 
-export default ProductDecoration;
+export default Product;

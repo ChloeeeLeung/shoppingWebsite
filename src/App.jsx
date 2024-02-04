@@ -6,7 +6,7 @@ import {
 	Navigate,
 } from "react-router-dom";
 import Home from "./components/Home";
-import ProductDecoration from "./components/ProductDecoration";
+import Product from "./components/Product";
 
 const productList = [
 	{ id: 'decoration'},
@@ -74,7 +74,7 @@ function App() {
 						productList.map((product) => (
 							<Route
 								path={`/${product.id}/:product`}
-								element={<ProductDecoration hierarchicalMenu=
+								element={<Product hierarchicalMenu=
 									{[
 										{ name: 'Home', path: '/' },
 										{ name: `${ product.id }`, path: `/${ product.id }` },

@@ -123,10 +123,10 @@ function ProductList() {
     <div className="Product-list">
       {productList.map((product, index) => (
         <div className="Product-card" key={index}>
-          <Link to={`${product.pathname}/product`}>
+          <Link to={`${product.pathname}/${product.name}`}>
             <img src={product.image} className="Product-img" alt={product.name} />
           </Link>
-          <Link to={{ pathname: `${product.pathname}/product` }}>
+          <Link to={{ pathname: `${product.pathname}/${product.name}` }}>
             <h6 className="Product-name">{product.name}</h6>
           </Link>
           <h6 className="Product-price">{product.price}</h6>

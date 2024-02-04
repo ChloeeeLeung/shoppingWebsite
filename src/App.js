@@ -17,7 +17,6 @@ const productList = [
 
 
 function App() {
-
 	const hierarchicalHomeMenu = [
 		{ name: 'Home', path: '/' },
 	];
@@ -40,30 +39,6 @@ function App() {
 	const hierarchicalCupMenu = [
 		{ name: 'Home', path: '/' },
 		{ name: 'Decoration', path: '/cup' },
-	];
-
-	const hierarchicalCupProductMenu = [
-		{ name: 'Home', path: '/' },
-		{ name: 'Cup', path: '/cup' },
-		{ name: 'Product', path: '/cup/product' }
-	];
-
-	const hierarchicalVaseProductMenu = [
-		{ name: 'Home', path: '/' },
-		{ name: 'Vase', path: '/vase' },
-		{ name: 'Product', path: '/vase/product' }
-	];
-
-	const hierarchicalTablewareProductMenu = [
-		{ name: 'Home', path: '/' },
-		{ name: 'Tableware', path: '/tableware' },
-		{ name: 'Product', path: '/tableware/product' }
-	];
-
-	const hierarchicalDecorationProductMenu = [
-		{ name: 'Home', path: '/' },
-		{ name: 'Decoration', path: '/decoration' },
-		{ name: 'Product', path: '/decoration/product' }
 	];
 
 	return (
@@ -98,12 +73,14 @@ function App() {
 					{
 						productList.map((product) => (
 							<Route
-								path={`/${product.id}/product`}
-								element={<ProductDecoration hierarchicalMenu={
-									product.id === 'cup' ? hierarchicalCupProductMenu :
-										product.id === 'vase' ? hierarchicalVaseProductMenu :
-											product.id === 'tableware' ? hierarchicalTablewareProductMenu :
-												hierarchicalDecorationProductMenu} />}
+								path={`/${product.id}/:product`}
+								element={<ProductDecoration hierarchicalMenu=
+									{[
+										{ name: 'Home', path: '/' },
+										{ name: `${ product.id }`, path: `/${ product.id }` },
+										{ name: 'Product', path: '' }
+									]}
+								/>}
 							/>
 						))
 					}

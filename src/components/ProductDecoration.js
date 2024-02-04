@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const ProductDecoration = ({ hierarchicalMenu }) => {
     const location = useLocation();
+
     console.log(location.pathname);
 	return (
 		<div className="App"> 
@@ -31,7 +32,7 @@ const ProductDecoration = ({ hierarchicalMenu }) => {
                     <button className="Checkout">Checkout</button>
                     </div>
                 </nav>
-                <nav>
+                <nav className="Hierarchical">
                 {hierarchicalMenu.map((item, index) => (
                     <React.Fragment key={item.path}>
                         {index !== 0 && ' > '}
@@ -46,6 +47,8 @@ const ProductDecoration = ({ hierarchicalMenu }) => {
                     <dir className='Product-page-detail'>
                         <h3>Candle Container</h3>
                         <h5>Price: $ 150</h5>
+                        <h5>Inventory: 3</h5>
+                        <h5 className='Inventory'>Only 3 left!</h5>
                         <h6>Description: This is a candle container.</h6>
                         <button className="Add-to-cart">Add To Cart</button>
                     </dir>

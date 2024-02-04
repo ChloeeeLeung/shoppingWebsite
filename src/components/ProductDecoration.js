@@ -1,11 +1,11 @@
 import React from "react";
 import logo from '../assets/logo.jpg';
 import "../App.css";
-import product1 from '../assets/product1.jpg';
 import { Link, useLocation } from 'react-router-dom';
 
 const ProductDecoration = ({ hierarchicalMenu }) => {
     const location = useLocation();
+    const { product } = location?.state;
 
     console.log(location.pathname);
 	return (
@@ -36,20 +36,22 @@ const ProductDecoration = ({ hierarchicalMenu }) => {
                 {hierarchicalMenu.map((item, index) => (
                     <React.Fragment key={item.path}>
                         {index !== 0 && ' > '}
-                        <Link to={item.path} className={location.pathname === item.path ? 'active' : ''}>
+                        <Link to={item.path} className={location.pathname === item.path ? 'active' : ''} state={{ product: product }}>
                         {item.name}
                         </Link>
                     </React.Fragment>
                     ))}
                 </nav>
                 <div className="Product-page-card">
-                    <img src={product1} className="Product-page-img" alt="Product 1" />
+                    <img src={product.image} className="Product-page-img" alt="Product 1" />
                     <dir className='Product-page-detail'>
-                        <h3>Candle Container</h3>
-                        <h5>Price: $ 150</h5>
-                        <h5>Inventory: 3</h5>
-                        <h5 className='Inventory'>Only 3 left!</h5>
-                        <h6>Description: This is a candle container.</h6>
+                        <h3>{product.name}</h3>
+                        <h5>Price: {product.price}</h5>
+                        <h5>Inventory: {product.inventory}</h5>
+                        {product.inventory <= 3 && (
+                            <h5 className="Inventory">Only {product.inventory} left!</h5>
+                        )}
+                        <h6>Description: This is a {product.name}.</h6>
                         <button className="Add-to-cart">Add To Cart</button>
                     </dir>
                 </div>

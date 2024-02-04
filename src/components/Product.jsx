@@ -48,7 +48,7 @@ const Product = ({ hierarchicalMenu }) => {
                         <h3>{product.name}</h3>
                         <h5>Price: {product.price}</h5>
                         <h5>Inventory: {product.inventory}</h5>
-                        {product.inventory <= 3 && (
+                        {product.inventory < 3 && (
                             <h5 className="Inventory">Only {product.inventory} left!</h5>
                         )}
                         <h6>Description: This is a {product.name}.</h6>

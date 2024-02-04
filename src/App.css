@@ -112,8 +112,10 @@
 
 .Submenu {
   background-color: white;
+  position: absolute;
   color: #3D2C2E;
   border-radius: 15px;
+  margin-left: -25vh;
   min-width: 40vh;
 }
 
